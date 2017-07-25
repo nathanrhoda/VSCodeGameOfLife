@@ -1,0 +1,10 @@
+maven/my-gol/target/my-gol-1.0-SNAPSHOT.jar
+maven/my-gol/target/surefire-reports/com.gol.app.AppTest.txt
+maven/my-gol/target/surefire-reports/TEST-com.gol.app.AppTest.xml
+maven/my-gol/target/surefire-reports/com.gol.app.AppTest.txt
+maven/my-gol/target/my-gol-1.0-SNAPSHOT.jar
+maven/my-gol/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+maven/my-gol/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+maven/my-gol/target/surefire-reports/com.gol.app.GridTest.txt
+maven/my-gol/target/surefire-reports/TEST-com.gol.app.AppTest.xml
+maven/my-gol/target/surefire-reports/TEST-com.gol.app.GridTest.xml
