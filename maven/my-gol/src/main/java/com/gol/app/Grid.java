@@ -8,4 +8,8 @@ public class Grid
     public int Cells;
 	public int Dimensions;
 
+    public void DisplaySomething(){
+        System.out.println( "Something has been done!" );
+    }
+
 }
