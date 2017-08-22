@@ -60,4 +60,43 @@ public class GridTest {
     	
     	assertEquals(3, neighbours.size());
     }
+
+    @Test 
+    public void Isolation_WhereLiveCellHasLessThanTwoLiveNeighbours_MakesCellDead(){
+    	int x = 0;
+    	int y = 0;
+    	
+    	boolean alive = true;
+    	Cell cell = grid.FindCell(x, y);
+    	cell.SetStatus(alive);
+    	
+    	grid.Isolation();
+    	
+    	cell = grid.FindCell(x, y);
+    	assertFalse(cell.isAlive());
+    }
+    
+    @Test 
+    public void Isolation_WhereLiveCellHasMoreThanTwoLiveNeighbours_LeavesCellAlive(){
+    	int x = 0;
+    	int y = 0;
+    	
+    	boolean alive = true;
+    	Cell cell = grid.FindCell(x, y);
+    	cell.SetStatus(alive);
+    	
+    	Cell cell1 = grid.FindCell(x+1, y);
+    	cell1.SetStatus(alive);
+    	
+    	Cell cell2 = grid.FindCell(x, y+1);
+    	cell2.SetStatus(alive);
+    	
+    	Cell cell3 = grid.FindCell(x+1, y+1);
+    	cell3.SetStatus(alive);
+    	
+    	grid.Isolation();
+    	
+    	cell = grid.FindCell(x, y);
+    	assertTrue(cell.isAlive());
+    }
 }
