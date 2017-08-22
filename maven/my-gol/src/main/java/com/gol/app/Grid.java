@@ -101,4 +101,11 @@ public class Grid
     		}
     	}				
 	}
+
+	public void SetSeed(List<Cell> seed) {
+		for(Cell cell: seed){
+			Cell foundCell = FindCell(cell.getX(), cell.getY());
+			foundCell.SetStatus(true);			
+		}		
+	}
 }

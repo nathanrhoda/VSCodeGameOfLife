@@ -1,6 +1,8 @@
 package com.gol.app;
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -221,5 +223,34 @@ public class GridTest {
     	
     	cell = grid.FindCell(x, y);
     	assertFalse(cell.isAlive());    
-    }   
+    }
+    
+    @Test
+    public void SetSeed_WhereValidSeedSuppliedForCells_ReturnsIsAliveTrueForSeedCells(){
+    	int x1 = 0;
+    	int y1 = 0;
+    	Cell cell1 = new Cell(x1, y1);
+    	
+    	int x2 = 2;
+    	int y2 = 2;
+    	Cell cell2 = new Cell(x2, y2);
+    	
+    	int x3 = 3;
+    	int y3 = 3;    	    	
+    	
+    	List<Cell> seed = new ArrayList<Cell>();
+    	seed.add(cell1);
+    	seed.add(cell2);
+    	
+    	grid.SetSeed(seed);
+    	
+    	Cell foundCell1 = grid.FindCell(x1, y1);
+    	Cell foundCell2 = grid.FindCell(x2, y2);
+    	Cell foundCell3 = grid.FindCell(x3, y3);
+    	
+    	assertTrue(foundCell1.isAlive());
+    	assertTrue(foundCell2.isAlive());
+    	assertFalse(foundCell3.isAlive());
+    }
+    
 }
