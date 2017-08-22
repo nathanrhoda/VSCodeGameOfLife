@@ -15,16 +15,17 @@ public class GridTest {
 	
 	@Before
 	public void Setup(){
-		grid.IntializeGrid();
+		
 	}
-	
-    @Test
-    public void IntializeGrid_WhereAllRunsSuccessfully_Returns16Cells()    {               
-        int cellCount = grid.Cells.size();
+
+	@Test
+    public void Create_Successfully_Returns16CellsDeadCells()    {               
+        long cellCount = grid.Cells.stream().filter(x->false == x.isAlive()).count();
         
         assertEquals(16, cellCount);
     }           
 
+	
     @Test
     public void FindCell_WhereX1AndY2IsSupplied_ReturnsCellWithThoseCoordinates(){
     	int x = 1;
@@ -45,7 +46,7 @@ public class GridTest {
     }
     
     @Test 
-    public void GetNeighbours_WhereValidCellSupplied_ReturnsEightNeighbours(){
+    public void GetNeighbours_WhereValidCellWithEightNeighboursSupplied_ReturnsEightNeighbours(){
     	int x = 1;
     	int y = 1;
     	List<Cell> neighbours = grid.GetNeighbours(x, y);
@@ -79,7 +80,7 @@ public class GridTest {
     }
     
     @Test 
-    public void Isolation_WhereLiveCellHasMoreThanTwoLiveNeighbours_ReturnsCellAliveIsTrue(){
+    public void Isolation_WhereLiveCellHasMoreThanTwoLiveNeighbours_ReturnsCellAliveIsTrueNothingChanges(){
     	int x = 0;
     	int y = 0;
     	
@@ -253,4 +254,20 @@ public class GridTest {
     	assertFalse(foundCell3.isAlive());
     }
     
+    @Test
+    public void Tick_WhereSeedForFirstCellIsSet_ReturnsSeedCellIsAliveFalse(){
+    	Cell cell = new Cell(0, 0);
+    	List<Cell> seed = new ArrayList<Cell>();
+    	seed.add(cell);    	
+    	
+    	grid.SetSeed(seed);
+    	Cell foundCell = grid.FindCell(cell.getX(), cell.getY());
+    	assertTrue(foundCell.isAlive());
+    	
+    	grid.Tick();
+    	
+    	foundCell = grid.FindCell(cell.getX(), cell.getY()); 
+    	
+    	assertFalse(foundCell.isAlive());
+    }
 }

@@ -3,8 +3,8 @@
 *3) test that cells are dead when they are set to die
 *4) test that a cell has neighbours 8 neighbouts
 *5) test that a live cell with less that 2 neighbours dies
-6) test that a live cell with more than 3 neighbours dies
-7) test that a live cel with 2 or 3 live neighbours lives on unchanged
-8) test that a dead cell with exactly 3 neighbours becomes alive
-9) test that a seed fed into the grid sets the correct cells alive alive
+*6) test that a live cell with more than 3 neighbours dies
+*7) test that a dead cell with exactly 3 neighbours becomes aliveunchanged
+!8) test that a live cel with 2 or 3 live neighbours lives on 
+*9) test that a seed fed into the grid sets the correct cells alive alive
 10)ticks?

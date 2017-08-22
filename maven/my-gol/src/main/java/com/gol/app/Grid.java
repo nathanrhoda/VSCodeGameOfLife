@@ -7,25 +7,38 @@ import java.util.List;
 public class Grid
 {
     public Grid() {                
-        
+    	IntializeGrid();   
     }
     
     public List<Cell> Cells = new ArrayList<Cell>();
-	public int Dimensions;
 	
     public void DisplaySomething(){
         System.out.println( "Something has been done!" );
     }
 
-    public void IntializeGrid(){
+    private void IntializeGrid(){
     	for(int x=0; x<4; x++){
     		for(int y=0; y<4; y++){
     			Cells.add(new Cell(x, y));
     		}
     	}
     }
-
-	public Cell FindCell(int x, int y) {
+    
+    public void SetSeed(List<Cell> seed) {
+		for(Cell cell: seed){
+			Cell foundCell = FindCell(cell.getX(), cell.getY());
+			foundCell.SetStatus(true);			
+		}		
+	}
+    
+	public void Tick() {
+		Isolation();
+		Suffercation();
+		Ressurection();
+		
+	}
+	
+    public Cell FindCell(int x, int y) {
 		Cell cell = Cells.stream()
 							.filter(item->x == item.getX() && y == item.getY())
 							.findAny()            
@@ -100,12 +113,5 @@ public class Grid
     			}
     		}
     	}				
-	}
-
-	public void SetSeed(List<Cell> seed) {
-		for(Cell cell: seed){
-			Cell foundCell = FindCell(cell.getX(), cell.getY());
-			foundCell.SetStatus(true);			
-		}		
-	}
+	}	
 }
