@@ -149,7 +149,77 @@ public class GridTest {
     	grid.Suffercation();
     	
     	cell = grid.FindCell(x, y);
-    	assertTrue(cell.isAlive());
-    	
+    	assertTrue(cell.isAlive());    
     }
+    
+    @Test 
+    public void Ressurection_WhereDeadCellWithTwoLiveNeighbours_ReturnsCellIsAliveIsTrue(){
+    	int x = 1;
+    	int y = 1;
+    	
+    	boolean dead = false;
+    	boolean alive = true;
+    	Cell cell = grid.FindCell(x, y);
+    	cell.SetStatus(dead);
+    	
+    	Cell cell1 = grid.FindCell(x+1, y);
+    	cell1.SetStatus(alive);
+    	
+    	Cell cell2 = grid.FindCell(x, y+1);
+    	cell2.SetStatus(alive);
+    	
+    	   	
+    	grid.Ressurection();
+    	
+    	cell = grid.FindCell(x, y);
+    	assertTrue(cell.isAlive());    
+    }
+    
+    @Test 
+    public void Ressurection_WhereDeadCellWithOneLiveNeighbours_ReturnsCellIsAliveIsFalse(){
+    	int x = 1;
+    	int y = 1;
+    	
+    	boolean dead = false;
+    	boolean alive = true;
+    	Cell cell = grid.FindCell(x, y);
+    	cell.SetStatus(dead);
+    	
+    	Cell cell1 = grid.FindCell(x+1, y);
+    	cell1.SetStatus(alive);
+    	    
+    	   	
+    	grid.Ressurection();
+    	
+    	cell = grid.FindCell(x, y);
+    	assertFalse(cell.isAlive());    
+    }    
+    
+    @Test 
+    public void Ressurection_WhereDeadCellWithFourLiveNeighbours_ReturnsCellIsAliveIsFalse(){
+    	int x = 1;
+    	int y = 1;
+    	
+    	boolean dead = false;
+    	boolean alive = true;
+    	Cell cell = grid.FindCell(x, y);
+    	cell.SetStatus(dead);
+    	
+    	Cell cell1 = grid.FindCell(x+1, y);
+    	cell1.SetStatus(alive);
+    	    
+    	Cell cell2 = grid.FindCell(x+1, y);
+    	cell2.SetStatus(alive);
+    	
+    	Cell cell3 = grid.FindCell(x+1, y);
+    	cell3.SetStatus(alive);
+    	
+    	Cell cell4 = grid.FindCell(x+1, y);
+    	cell4.SetStatus(alive);
+    	   	
+    	grid.Ressurection();
+    	
+    	cell = grid.FindCell(x, y);
+    	assertFalse(cell.isAlive());    
+    }   
 }

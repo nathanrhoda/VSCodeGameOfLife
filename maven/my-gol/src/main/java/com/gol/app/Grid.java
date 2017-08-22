@@ -83,7 +83,22 @@ public class Grid
     				}    		
     			}
     		}
-    	}
-		
+    	}		
+	}
+
+	public void Ressurection() {
+		for(int x=0; x<4; x++){
+    		for(int y=0; y<4; y++){
+    			Cell cell = FindCell(x, y);
+    			List<Cell> neighbours = GetNeighbours(cell.getX(), cell.getY());
+    			
+    			if(!cell.isAlive()){
+    				long count = neighbours.stream().filter(n->true == n.isAlive()).count();
+    				if(count == 2 || count == 3){
+    					cell.SetStatus(true);	
+    				}    		
+    			}
+    		}
+    	}				
 	}
 }
