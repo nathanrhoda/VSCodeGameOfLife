@@ -13,9 +13,20 @@ public class Cell {
 		return _y;
 	}
 	
+	private boolean _isAlive;
+	public boolean isAlive() {
+		return _isAlive;
+	}	
+	
 	public Cell(int x, int y) {
 		_x = x;
 		_y = y;
+	}
+
+
+
+	public void SetStatus(boolean status) {
+		_isAlive = status;		
 	}
 
 }
