@@ -1,6 +1,8 @@
 package com.gol.app;
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -37,7 +39,25 @@ public class GridTest {
     	int y = 211;
     	Cell cell = grid.FindCell(x, y);
     	
-    	assertNull(cell);
+    	assertNull(cell);    	
+    }
+    
+    @Test 
+    public void GetNeighbours_WhereValidCellSupplied_ReturnsEightNeighbours(){
+    	int x = 1;
+    	int y = 1;
+    	List<Cell> neighbours = grid.GetNeighbours(x, y);
     	
+    	assertEquals(8, neighbours.size());
+    	
+    }
+    
+    @Test 
+    public void GetNeighbours_WhereValidCellWith3NeighboursSupplied_ReturnsThreeNeighbours(){
+    	int x = 0;
+    	int y = 0;
+    	List<Cell> neighbours = grid.GetNeighbours(x, y);
+    	
+    	assertEquals(3, neighbours.size());
     }
 }
