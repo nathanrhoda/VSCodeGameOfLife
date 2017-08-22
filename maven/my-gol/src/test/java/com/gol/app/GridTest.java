@@ -77,7 +77,7 @@ public class GridTest {
     }
     
     @Test 
-    public void Isolation_WhereLiveCellHasMoreThanTwoLiveNeighbours_LeavesCellAlive(){
+    public void Isolation_WhereLiveCellHasMoreThanTwoLiveNeighbours_ReturnsCellAliveIsTrue(){
     	int x = 0;
     	int y = 0;
     	
@@ -98,5 +98,58 @@ public class GridTest {
     	
     	cell = grid.FindCell(x, y);
     	assertTrue(cell.isAlive());
+    }
+    
+    @Test
+    public void Suffercation_WhereLiveCellHasMoreThanThreeLiveNeighbours_ReturnsCellIsAliveIsFalse(){
+    	int x = 1;
+    	int y = 1;
+    	
+    	boolean alive = true;
+    	Cell cell = grid.FindCell(x, y);
+    	cell.SetStatus(alive);
+    	
+    	Cell cell1 = grid.FindCell(x+1, y);
+    	cell1.SetStatus(alive);
+    	
+    	Cell cell2 = grid.FindCell(x, y+1);
+    	cell2.SetStatus(alive);
+    	
+    	Cell cell3 = grid.FindCell(x+1, y+1);
+    	cell3.SetStatus(alive);
+    	
+    	Cell cell4 = grid.FindCell(x-1, y+1);
+    	cell4.SetStatus(alive);
+    	
+    	grid.Suffercation();
+    	
+    	cell = grid.FindCell(x, y);
+    	assertFalse(cell.isAlive());
+    	
+    }
+    
+    @Test
+    public void Suffercation_WhereLiveCellHasLessThanThreeLiveNeighbours_ReturnsCellIsAliveIsFalse(){
+    	int x = 1;
+    	int y = 1;
+    	
+    	boolean alive = true;
+    	Cell cell = grid.FindCell(x, y);
+    	cell.SetStatus(alive);
+    	
+    	Cell cell1 = grid.FindCell(x+1, y);
+    	cell1.SetStatus(alive);
+    	
+    	Cell cell2 = grid.FindCell(x, y+1);
+    	cell2.SetStatus(alive);
+    	
+    	Cell cell3 = grid.FindCell(x+1, y+1);
+    	cell3.SetStatus(alive);
+    	   	
+    	grid.Suffercation();
+    	
+    	cell = grid.FindCell(x, y);
+    	assertTrue(cell.isAlive());
+    	
     }
 }
