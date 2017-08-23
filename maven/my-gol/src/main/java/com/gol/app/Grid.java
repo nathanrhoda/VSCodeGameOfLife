@@ -10,21 +10,46 @@ public class Grid
     	IntializeGrid();   
     }
     
+    public Grid(List<Cell> seed){
+    	IntializeGrid();
+    	SetSeed(seed);
+    }
+    
     public List<Cell> Cells = new ArrayList<Cell>();
 	
     public void DisplaySomething(){
         System.out.println( "Something has been done!" );
     }
 
+    @Override
+    public String toString() {
+    	String gridView = new String();
+    	int count = 0;
+    	
+    	for(Cell cell: Cells){
+    		
+    		gridView += cell.toString();
+    		count++;
+    		
+    		if(count == 8){
+    			gridView += "\n\r";
+    			count = 0;
+    		}    		
+    	}
+    	
+    	return gridView;
+    }
+    
+    
     private void IntializeGrid(){
-    	for(int x=0; x<4; x++){
-    		for(int y=0; y<4; y++){
+    	for(int x=0; x<8; x++){
+    		for(int y=0; y<8; y++){
     			Cells.add(new Cell(x, y));
     		}
     	}
     }
     
-    public void SetSeed(List<Cell> seed) {
+    private void SetSeed(List<Cell> seed) {
 		for(Cell cell: seed){
 			Cell foundCell = FindCell(cell.getX(), cell.getY());
 			foundCell.SetStatus(true);			

@@ -2,27 +2,18 @@ package com.gol.app;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class GridTest {            
     
 	Grid grid = new Grid();
 	
-	@Before
-	public void Setup(){
-		
-	}
-
 	@Test
     public void Create_Successfully_Returns16CellsDeadCells()    {               
         long cellCount = grid.Cells.stream().filter(x->false == x.isAlive()).count();
         
-        assertEquals(16, cellCount);
+        assertEquals(64, cellCount);
     }           
 
 	
@@ -243,7 +234,7 @@ public class GridTest {
     	seed.add(cell1);
     	seed.add(cell2);
     	
-    	grid.SetSeed(seed);
+    	grid = new Grid(seed);
     	
     	Cell foundCell1 = grid.FindCell(x1, y1);
     	Cell foundCell2 = grid.FindCell(x2, y2);
@@ -260,7 +251,7 @@ public class GridTest {
     	List<Cell> seed = new ArrayList<Cell>();
     	seed.add(cell);    	
     	
-    	grid.SetSeed(seed);
+    	grid = new Grid(seed);
     	Cell foundCell = grid.FindCell(cell.getX(), cell.getY());
     	assertTrue(foundCell.isAlive());
     	

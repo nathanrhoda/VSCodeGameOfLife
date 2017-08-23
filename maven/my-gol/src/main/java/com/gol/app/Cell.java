@@ -23,10 +23,17 @@ public class Cell {
 		_y = y;
 	}
 
-
-
 	public void SetStatus(boolean status) {
 		_isAlive = status;		
+	}
+		
+	@Override
+	public String toString() {
+		if(isAlive()){
+			return "X";
+		}
+			
+		return "O";
 	}
 
 }
